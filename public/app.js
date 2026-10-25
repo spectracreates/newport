@@ -9,278 +9,87 @@
 (function () {
   var reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
 
-  /* ---------- 1. Hero scene ---------- */
-  var hero = document.querySelector(".hero");
-  var canvas = hero && hero.querySelector(".scene");
-  var toggle = hero && hero.querySelector(".motion-toggle");
-
-  if (canvas && canvas.getContext) {
-    var ctx = canvas.getContext("2d");
-    var bg = document.createElement("canvas");
-    var fx = document.createElement("canvas");
-    var bgx = bg.getContext("2d");
-    var fxx = fx.getContext("2d");
-    var W = 0, H = 0, DPR = 1;
-    var cars = [];
-    var running = false, userPaused = false, onScreen = true, last = 0, raf = 0;
-
-    // Seeded random so the skyline is the same on every visit.
-    var seed = 528;
-    function rand() {
-      seed = (seed * 16807) % 2147483647;
-      return (seed - 1) / 2147483646;
-    }
-
-    function deckY(x) {
-      var t = x / W;
-      var base = W < 700 ? 0.25 : 0.33;
-      return H * (base - 0.035 * t + 0.014 * Math.sin(t * Math.PI));
-    }
-    function waterY() {
-      return H * (W < 700 ? 0.29 : 0.37);
-    }
-
-    function drawBackground() {
-      var g = bgx;
-      g.setTransform(DPR, 0, 0, DPR, 0, 0);
-      var horizon = H * (W < 700 ? 0.22 : 0.3);
-
-      // Sky: deep night blue, warm city haze at the horizon.
-      var sky = g.createLinearGradient(0, 0, 0, horizon);
-      sky.addColorStop(0, "#06111f");
-      sky.addColorStop(0.7, "#10243d");
-      sky.addColorStop(1, "#2a2b3f");
-      g.fillStyle = sky;
-      g.fillRect(0, 0, W, horizon + 2);
-
-      // A few stars.
-      seed = 7;
-      g.fillStyle = "rgba(255,244,220,0.5)";
-      for (var s = 0; s < Math.round(W / 22); s++) {
-        g.fillRect(rand() * W, rand() * horizon * 0.55, 1, 1);
-      }
-
-      // Lagos Island skyline on the far shore.
-      seed = 528;
-      var x = W * 0.38;
-      while (x < W * 1.02) {
-        var bw = 14 + rand() * 34;
-        var tall = rand() < 0.16;
-        var bh = (tall ? 70 + rand() * 90 : 14 + rand() * 46) * Math.max(0.7, H / 900);
-        g.fillStyle = "#0a1729";
-        g.fillRect(x, horizon - bh, bw, bh + 4);
-        // Lit windows.
-        for (var wy = horizon - bh + 5; wy < horizon - 3; wy += 6) {
-          for (var wx = x + 3; wx < x + bw - 3; wx += 5) {
-            if (rand() < 0.16) {
-              g.fillStyle = rand() < 0.7 ? "rgba(255,190,90,0.75)" : "rgba(255,244,220,0.6)";
-              g.fillRect(wx, wy, 1.6, 2.2);
-            }
-          }
-        }
-        x += bw + rand() * 6;
-      }
-      // Low mainland shore on the left.
-      g.fillStyle = "#091526";
-      g.fillRect(0, horizon - 8, W * 0.38, 10);
-
-      // Lagoon.
-      var wY = waterY();
-      var water = g.createLinearGradient(0, horizon, 0, H);
-      water.addColorStop(0, "#0d2036");
-      water.addColorStop(1, "#050c18");
-      g.fillStyle = water;
-      g.fillRect(0, horizon, W, H - horizon);
-
-      // Skyline reflected as soft vertical smears.
-      seed = 99;
-      for (var r = 0; r < Math.round(W / 16); r++) {
-        var rx = W * 0.38 + rand() * W * 0.62;
-        g.fillStyle = rand() < 0.6 ? "rgba(255,178,63,0.10)" : "rgba(255,244,220,0.07)";
-        g.fillRect(rx, horizon + 4 + rand() * 30, 1.5, 10 + rand() * 40);
-      }
-
-      // Bridge piers into the water.
-      g.fillStyle = "#040b16";
-      for (var px = 10; px < W; px += 52) {
-        var dy = deckY(px);
-        g.fillRect(px, dy + 6, 5, wY - dy + 10);
-      }
-
-      // Deck.
-      g.lineCap = "round";
-      g.strokeStyle = "#030912";
-      g.lineWidth = 11;
-      g.beginPath();
-      for (var dx = -10; dx <= W + 10; dx += 8) {
-        var y = deckY(dx) + 6;
-        if (dx === -10) g.moveTo(dx, y); else g.lineTo(dx, y);
-      }
-      g.stroke();
-
-      // Sodium street lamps and their reflections.
-      for (var lx = 30; lx < W; lx += 118) {
-        var ly = deckY(lx);
-        g.strokeStyle = "#16263a";
-        g.lineWidth = 1.5;
-        g.beginPath();
-        g.moveTo(lx, ly);
-        g.lineTo(lx, ly - 28);
-        g.stroke();
-        var glow = g.createRadialGradient(lx, ly - 29, 0, lx, ly - 29, 18);
-        glow.addColorStop(0, "rgba(255,190,90,0.95)");
-        glow.addColorStop(0.25, "rgba(255,178,63,0.35)");
-        glow.addColorStop(1, "rgba(255,178,63,0)");
-        g.fillStyle = glow;
-        g.fillRect(lx - 18, ly - 47, 36, 36);
-        var ry = wY + (wY - (ly - 29)) * 0.6;
-        var refl = g.createLinearGradient(0, ry - 30, 0, ry + 30);
-        refl.addColorStop(0, "rgba(255,178,63,0)");
-        refl.addColorStop(0.5, "rgba(255,178,63,0.22)");
-        refl.addColorStop(1, "rgba(255,178,63,0)");
-        g.fillStyle = refl;
-        g.fillRect(lx - 1.5, ry - 30, 3, 60);
-      }
-    }
-
-    function makeCar(dir, anywhere) {
-      return {
-        dir: dir,
-        x: anywhere ? Math.random() * W : dir > 0 ? -20 - Math.random() * W * 0.4 : W + 20 + Math.random() * W * 0.4,
-        v: W * (0.09 + Math.random() * 0.1),
-        lane: (dir > 0 ? 3 : -3) + (Math.random() - 0.5) * 2,
-      };
-    }
-
-    function populate() {
-      cars = [];
-      var n = Math.round(Math.min(64, Math.max(18, W / 24)));
+  /* ---------- Project covers: generative light trails in each project's discipline colours ---------- */
+  (function () {
+    var NS = "http://www.w3.org/2000/svg";
+    var css = getComputedStyle(document.documentElement);
+    function hash(str) { var h = 2166136261; for (var i = 0; i < str.length; i++) { h ^= str.charCodeAt(i); h = Math.imul(h, 16777619); } return h >>> 0; }
+    Array.prototype.slice.call(document.querySelectorAll(".cover")).forEach(function (el) {
+      var seed = hash(el.getAttribute("data-seed") || "x") || 1;
+      function r() { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; }
+      var cols = (el.getAttribute("data-colors") || "headlight").split(",").map(function (c) { return css.getPropertyValue("--" + c).trim() || "#fff"; });
+      var svg = document.createElementNS(NS, "svg");
+      svg.setAttribute("viewBox", "0 0 320 200");
+      svg.setAttribute("preserveAspectRatio", "xMidYMid slice");
+      var meetX = 200 + r() * 90, meetY = 60 + r() * 80;
+      var n = 7 + Math.floor(r() * 5);
       for (var i = 0; i < n; i++) {
-        cars.push(makeCar(i % 2 ? 1 : -1, true));
+        var y0 = 10 + r() * 180, c = cols[i % cols.length];
+        var path = document.createElementNS(NS, "path");
+        var c1x = 80 + r() * 80, c2x = meetX - 40 - r() * 60;
+        var d = "M-10," + y0.toFixed(1) + " C" + c1x.toFixed(1) + "," + y0.toFixed(1) + " " + c2x.toFixed(1) + "," + (meetY + (y0 - meetY) * 0.2).toFixed(1) + " " + meetX.toFixed(1) + "," + meetY.toFixed(1);
+        path.setAttribute("d", d);
+        path.setAttribute("pathLength", "1");
+        path.setAttribute("stroke", c);
+        path.style.color = c;
+        path.setAttribute("stroke-width", (1 + r() * 1.6).toFixed(2));
+        path.setAttribute("opacity", (0.45 + r() * 0.55).toFixed(2));
+        path.style.setProperty("--d", (r() * 0.25).toFixed(2) + "s");
+        svg.appendChild(path);
       }
-    }
-
-    function step(dt) {
-      var g = fxx;
-      g.setTransform(DPR, 0, 0, DPR, 0, 0);
-      // Fade the previous frame so lights leave long-exposure trails.
-      g.globalCompositeOperation = "destination-out";
-      g.fillStyle = "rgba(0,0,0," + Math.min(1, 0.024 * dt * 60) + ")";
-      g.fillRect(0, 0, W, H);
-      g.globalCompositeOperation = "lighter";
-      g.lineCap = "round";
-      var wY = waterY();
-      for (var i = 0; i < cars.length; i++) {
-        var c = cars[i];
-        var x0 = c.x;
-        c.x += c.dir * c.v * dt;
-        var y0 = deckY(x0) + c.lane;
-        var y1 = deckY(c.x) + c.lane;
-        var col = c.dir > 0 ? "255,74,61" : "255,244,220";
-        g.strokeStyle = "rgba(" + col + ",0.95)";
-        g.lineWidth = 2.6;
-        g.beginPath();
-        g.moveTo(x0, y0);
-        g.lineTo(c.x, y1);
-        g.stroke();
-        g.strokeStyle = "rgba(" + col + ",0.18)";
-        g.lineWidth = 7;
-        g.stroke();
-        // Reflection on the lagoon.
-        g.strokeStyle = "rgba(" + col + ",0.12)";
-        g.lineWidth = 3;
-        g.beginPath();
-        g.moveTo(x0, wY + (wY - y0) * 0.6);
-        g.lineTo(c.x, wY + (wY - y1) * 0.6);
-        g.stroke();
-        if ((c.dir > 0 && c.x > W + 30) || (c.dir < 0 && c.x < -30)) {
-          cars[i] = makeCar(c.dir, false);
-        }
+      var dot = document.createElementNS(NS, "circle");
+      dot.setAttribute("cx", meetX.toFixed(1)); dot.setAttribute("cy", meetY.toFixed(1)); dot.setAttribute("r", "4.5");
+      dot.setAttribute("fill", cols[0]);
+      svg.appendChild(dot);
+      if (r() < 0.5) {
+        // Mirror some covers so the set doesn't all flow the same way.
+        var gwrap = document.createElementNS(NS, "g");
+        gwrap.setAttribute("transform", "translate(320,0) scale(-1,1)");
+        while (svg.firstChild) gwrap.appendChild(svg.firstChild);
+        svg.appendChild(gwrap);
       }
-      g.globalCompositeOperation = "source-over";
-    }
-
-    function compose() {
-      ctx.setTransform(1, 0, 0, 1, 0, 0);
-      ctx.globalCompositeOperation = "source-over";
-      ctx.drawImage(bg, 0, 0);
-      ctx.globalCompositeOperation = "lighter";
-      ctx.drawImage(fx, 0, 0);
-      ctx.globalCompositeOperation = "source-over";
-    }
-
-    function frame(t) {
-      raf = 0;
-      if (!running) return;
-      var dt = last ? Math.min(0.05, (t - last) / 1000) : 1 / 60;
-      last = t;
-      step(dt);
-      compose();
-      raf = requestAnimationFrame(frame);
-    }
-
-    function updateRunning() {
-      var should = !userPaused && onScreen && !document.hidden && !reduce.matches;
-      if (should && !running) {
-        running = true;
-        last = 0;
-        raf = requestAnimationFrame(frame);
-      } else if (!should && running) {
-        running = false;
-        if (raf) cancelAnimationFrame(raf);
-        raf = 0;
-      }
-    }
-
-    function build() {
-      var rect = canvas.getBoundingClientRect();
-      W = Math.max(1, Math.round(rect.width));
-      H = Math.max(1, Math.round(rect.height));
-      DPR = Math.min(window.devicePixelRatio || 1, W < 700 ? 1.5 : 2);
-      [canvas, bg, fx].forEach(function (c) {
-        c.width = Math.round(W * DPR);
-        c.height = Math.round(H * DPR);
-      });
-      drawBackground();
-      fxx.clearRect(0, 0, fx.width, fx.height);
-      populate();
-      // Start with trails already on the bridge: a still long exposure under reduced motion.
-      var warm = reduce.matches ? 240 : 70;
-      for (var i = 0; i < warm; i++) step(1 / 60);
-      compose();
-    }
-
-    var resizeTimer = 0;
-    window.addEventListener("resize", function () {
-      clearTimeout(resizeTimer);
-      resizeTimer = setTimeout(build, 150);
+      el.appendChild(svg);
     });
+  })();
 
-    if (toggle) {
-      toggle.addEventListener("click", function () {
-        userPaused = !userPaused;
-        toggle.setAttribute("aria-pressed", String(userPaused));
-        toggle.textContent = userPaused ? "Play motion" : "Pause motion";
-        updateRunning();
-      });
+  /* ---------- Video players: a quiet custom control instead of browser chrome ---------- */
+  var ICON_PLAY = '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M8 5.5v13l11-6.5z" fill="currentColor"/></svg>';
+  var ICON_PAUSE = '<svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path d="M7 5h3.5v14H7zM13.5 5H17v14h-3.5z" fill="currentColor"/></svg>';
+  Array.prototype.slice.call(document.querySelectorAll(".feature-media video")).forEach(function (v) {
+    var box = v.parentNode;
+    var name = v.getAttribute("aria-label") || "video";
+    v.removeAttribute("controls");
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "vbtn";
+    var bar = document.createElement("span");
+    bar.className = "vbar";
+    bar.setAttribute("aria-hidden", "true");
+    box.appendChild(btn);
+    box.appendChild(bar);
+    function sync() {
+      var playing = !v.paused && !v.ended;
+      box.classList.toggle("playing", playing);
+      btn.innerHTML = playing ? ICON_PAUSE : ICON_PLAY;
+      btn.setAttribute("aria-label", (playing ? "Pause " : "Play ") + name);
     }
-
-    if ("IntersectionObserver" in window) {
-      new IntersectionObserver(function (entries) {
-        onScreen = entries[0].isIntersecting;
-        updateRunning();
-      }).observe(hero);
+    function progress() {
+      if (v.duration) bar.style.transform = "scaleX(" + (v.currentTime / v.duration) + ")";
     }
-    document.addEventListener("visibilitychange", updateRunning);
-
-    function applyMotionPreference() {
-      if (toggle) toggle.hidden = reduce.matches;
-      build();
-      updateRunning();
-    }
-    if (reduce.addEventListener) reduce.addEventListener("change", applyMotionPreference);
-    applyMotionPreference();
-  }
+    btn.addEventListener("click", function () {
+      if (v.paused || v.ended) {
+        // A visitor pressing play on a film with sound wants the sound.
+        if (!v.hasAttribute("data-autoplay")) v.muted = false;
+        v.play().catch(function () {});
+      } else {
+        v.pause();
+      }
+    });
+    v.addEventListener("click", function () { btn.click(); });
+    ["play", "pause", "ended"].forEach(function (e) { v.addEventListener(e, sync); });
+    v.addEventListener("timeupdate", progress);
+    sync();
+  });
 
   /* ---------- Motion studies: play muted while on screen ---------- */
   var studies = Array.prototype.slice.call(document.querySelectorAll("video[data-autoplay]"));

@@ -522,9 +522,9 @@ button {
 }
 .rows > li {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(0, 300px);
+  grid-template-columns: 220px minmax(0, 1fr) minmax(0, 260px);
   gap: 32px;
-  align-items: baseline;
+  align-items: center;
   padding: 26px 0;
   border-top: 1px solid var(--rule);
 }
@@ -544,6 +544,76 @@ button {
   .rows .heading a:hover {
     text-decoration-color: var(--sodium);
   }
+}
+
+/* Custom video control */
+.feature-media {
+  position: relative;
+}
+.feature-media video {
+  cursor: pointer;
+}
+.vbtn {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 72px;
+  height: 72px;
+  margin: -36px 0 0 -36px;
+  display: grid;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 244, 220, 0.92);
+  color: var(--night);
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+  transition: transform 160ms var(--ease-out), opacity 200ms ease, background-color 160ms ease;
+}
+.vbtn svg {
+  margin-left: 3px;
+}
+.vbtn:active {
+  transform: scale(0.95);
+}
+.playing .vbtn {
+  left: 14px;
+  top: auto;
+  bottom: 16px;
+  width: 44px;
+  height: 44px;
+  margin: 0;
+  background: rgba(11, 26, 46, 0.6);
+  color: var(--headlight);
+  opacity: 0.85;
+}
+.playing .vbtn svg {
+  margin-left: 0;
+}
+@media (hover: hover) and (pointer: fine) {
+  .vbtn:hover {
+    transform: scale(1.04);
+  }
+  .playing .vbtn {
+    opacity: 0;
+  }
+  .feature-media:hover .vbtn,
+  .vbtn:focus-visible {
+    opacity: 1;
+  }
+}
+.vbar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 3px;
+  background: var(--sodium);
+  transform-origin: left center;
+  transform: scaleX(0);
+  transition: transform 260ms linear;
+  pointer-events: none;
 }
 
 /* Motion studies */
@@ -589,6 +659,39 @@ button {
 .study figcaption b {
   color: var(--headlight);
   font-weight: 700;
+}
+
+/* Project covers */
+.cover {
+  aspect-ratio: 16 / 10;
+  border-radius: 10px;
+  overflow: hidden;
+  background:
+    radial-gradient(120% 90% at 85% 40%, rgba(255, 178, 63, 0.10), transparent 60%),
+    var(--lagoon);
+}
+.cover svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.cover path {
+  fill: none;
+  stroke-linecap: round;
+  filter: drop-shadow(0 0 3px currentColor);
+}
+.cover circle {
+  filter: drop-shadow(0 0 6px rgba(255, 255, 255, 0.6));
+}
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .rows > li:hover .cover path {
+    stroke-dasharray: 1 1;
+    animation: redraw 700ms var(--ease-out) var(--d) both;
+  }
+}
+@keyframes redraw {
+  from { stroke-dashoffset: 1; }
+  to { stroke-dashoffset: 0; }
 }
 
 /* Who I work with */
@@ -678,8 +781,12 @@ button {
     grid-template-areas: "copy" "wide" "tall";
   }
   .rows > li {
-    grid-template-columns: minmax(0, 1fr);
-    gap: 12px;
+    grid-template-columns: 160px minmax(0, 1fr);
+    gap: 12px 20px;
+    align-items: start;
+  }
+  .rows > li .tags {
+    grid-column: 2;
   }
   .with-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -701,6 +808,15 @@ button {
   .lane-list,
   .with-list {
     grid-template-columns: minmax(0, 1fr);
+  }
+  .rows > li {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .rows > li .tags {
+    grid-column: auto;
+  }
+  .cover {
+    aspect-ratio: 16 / 7;
   }
   .jobs li {
     grid-template-columns: minmax(0, 1fr);
