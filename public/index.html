@@ -2,210 +2,273 @@
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>Oluwayomi Marvellous | Operations & Technology Lead</title>
-    <meta name="description" content="Operations and technology lead, full-stack developer and AI automation specialist in Lagos. I build the systems and automations businesses run on." />
-    <meta name="theme-color" content="#eef0ec" />
+    <meta name="description" content="Operations and technology lead, full-stack developer and AI automation specialist from Lagos. I turn messy work into systems that run themselves." />
+    <meta name="theme-color" content="#F4C300" />
+    <meta name="color-scheme" content="light" />
 
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://devmarvel.vercel.app/" />
     <meta property="og:title" content="Oluwayomi Marvellous | Operations & Technology Lead" />
-    <meta property="og:description" content="I build the systems a business runs on: ops platforms, CRM integrations, AI agents and web apps." />
+    <meta property="og:description" content="I turn messy work into systems that run themselves: ops platforms, CRM integrations, AI agents and web apps." />
     <meta property="og:image" content="https://devmarvel.vercel.app/og.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Oluwayomi Marvellous | Operations & Technology Lead" />
-    <meta name="twitter:description" content="I build the systems a business runs on: ops platforms, CRM integrations, AI agents and web apps." />
+    <meta name="twitter:description" content="I turn messy work into systems that run themselves: ops platforms, CRM integrations, AI agents and web apps." />
     <meta name="twitter:image" content="https://devmarvel.vercel.app/og.png" />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+    <link rel="preload" href="/fonts/archivo.woff" as="font" type="font/woff" crossorigin />
     <link rel="stylesheet" href="/styles.css" />
     <script src="/app.js" defer></script>
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
 
-    <header class="nav">
-      <a href="#top" class="mark" aria-label="Back to top">Marvel</a>
+    <header class="top">
+      <a href="#top" class="mark" aria-label="Marvel, back to top">Marvel</a>
       <nav aria-label="Sections">
+        <a href="#route">The route</a>
         <a href="#work">Work</a>
         <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
         <a href="#contact">Contact</a>
       </nav>
     </header>
 
     <main id="main">
-      <section class="hero" id="top">
-        <div class="hero-copy">
-          <p class="who">Oluwayomi Marvellous, Operations &amp; Technology Lead</p>
-          <h1>I build the systems a business runs on.</h1>
-          <p class="lede">
-            Ops platforms, CRM integrations, AI agents and web apps. I find the
-            work your team does by hand, automate it, and make sure people
-            actually use it.
+      <!-- Hero -->
+      <section class="hero" id="top" aria-labelledby="hero-title">
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <p class="plate" aria-label="Route: Ketu to Mile 12 to anywhere, remote">
+              <span>Ketu</span><span class="dash" aria-hidden="true"></span><span>Mile 12</span><span class="dash" aria-hidden="true"></span><span>Anywhere</span>
+            </p>
+            <h1 id="hero-title" class="display">I turn messy work into systems that run themselves.</h1>
+            <p class="lede">
+              I’m Oluwayomi Marvellous, an operations and technology lead in
+              Lagos. I build ops platforms, CRM integrations, AI agents and web
+              apps, then make sure the team actually uses them.
+            </p>
+            <div class="actions">
+              <a class="btn btn-ink" href="mailto:oladejimarvel@gmail.com">Email me</a>
+              <a class="btn btn-line" href="/Oluwayomi-Marvellous-CV.pdf" download>Download CV (PDF)</a>
+            </div>
+          </div>
+          <p class="sticker" aria-label="Sticker: Shine your eye. Automate am.">
+            Shine your eye.<br />Automate am.
           </p>
-          <div class="actions">
-            <a class="btn primary" href="mailto:oladejimarvel@gmail.com">Email me</a>
-            <a class="btn" href="/Oluwayomi-Marvellous-CV.pdf" download>Download CV (PDF)</a>
-          </div>
-          <p class="where">Lagos, Nigeria. Open to remote and hybrid roles.</p>
         </div>
+        <div class="stripe" aria-hidden="true"></div>
+      </section>
 
-        <figure class="run" aria-label="Example of an automation I built for YSIDRA">
-          <div class="run-head">
-            <span class="status live" id="run-status"></span>
-            <span id="run-label">Order flow running</span>
+      <!-- The route: the one set-piece -->
+      <section class="route" id="route" aria-labelledby="route-title">
+        <div class="route-pin">
+          <div class="route-head">
+            <h2 id="route-title" class="heading">One order. Five stops. No copy-pasting.</h2>
+            <p>A real flow I built for YSIDRA. Every step used to be a WhatsApp message someone had to remember.</p>
           </div>
-          <ol class="run-steps" id="run-steps">
-            <li class="step"><span class="node" aria-hidden="true"></span><span class="app">ChatGPT</span><span class="text">Customer asks for 50 branded notebooks</span></li>
-            <li class="step"><span class="node" aria-hidden="true"></span><span class="app">MCP server</span><span class="text">Quote generated from the price list</span></li>
-            <li class="step"><span class="node" aria-hidden="true"></span><span class="app">HubSpot</span><span class="text">Deal created, channel: ChatGPT</span></li>
-            <li class="step"><span class="node" aria-hidden="true"></span><span class="app">Ops platform</span><span class="text">Design task assigned, due Friday</span></li>
-            <li class="step"><span class="node" aria-hidden="true"></span><span class="app">Calendar</span><span class="text">Production date synced</span></li>
+
+          <div class="route-line-wrap" aria-hidden="true">
+            <div class="route-line"><div class="route-fill"></div></div>
+            <svg class="bus" viewBox="0 0 72 36" width="100" height="50">
+              <rect x="2" y="3" width="66" height="25" rx="5" fill="#F4C300" stroke="#000" stroke-width="2.5" />
+              <rect x="2" y="16" width="66" height="5" fill="#000" />
+              <rect x="9" y="7" width="11" height="7" rx="1.5" fill="#000" />
+              <rect x="24" y="7" width="11" height="7" rx="1.5" fill="#000" />
+              <rect x="39" y="7" width="11" height="7" rx="1.5" fill="#000" />
+              <rect x="54" y="7" width="10" height="12" rx="1.5" fill="#000" />
+              <circle cx="17" cy="29" r="5" fill="#000" stroke="#F4C300" stroke-width="2" />
+              <circle cx="53" cy="29" r="5" fill="#000" stroke="#F4C300" stroke-width="2" />
+            </svg>
+          </div>
+
+          <ol class="stops">
+            <li class="stop" data-stop="0">
+              <span class="stop-dot" aria-hidden="true"></span>
+              <span class="stop-count">Stop 1 of 5</span>
+              <h3>ChatGPT</h3>
+              <p>A customer asks for 50 branded notebooks, right inside ChatGPT.</p>
+            </li>
+            <li class="stop" data-stop="1">
+              <span class="stop-dot" aria-hidden="true"></span>
+              <span class="stop-count">Stop 2 of 5</span>
+              <h3>MCP server</h3>
+              <p>My server prices it from YSIDRA’s list and sends a quote back instantly.</p>
+            </li>
+            <li class="stop" data-stop="2">
+              <span class="stop-dot" aria-hidden="true"></span>
+              <span class="stop-count">Stop 3 of 5</span>
+              <h3>HubSpot</h3>
+              <p>A deal appears in the CRM, tagged with the channel it came from.</p>
+            </li>
+            <li class="stop" data-stop="3">
+              <span class="stop-dot" aria-hidden="true"></span>
+              <span class="stop-count">Stop 4 of 5</span>
+              <h3>Ops platform</h3>
+              <p>A design task is assigned to the right person with a deadline.</p>
+            </li>
+            <li class="stop" data-stop="4">
+              <span class="stop-dot" aria-hidden="true"></span>
+              <span class="stop-count">Stop 5 of 5</span>
+              <h3>Calendar</h3>
+              <p>The production date lands on the team calendar. Nothing forgotten.</p>
+            </li>
           </ol>
-          <figcaption>A real flow from YSIDRA: no copy-pasting between apps, nothing forgotten.</figcaption>
-        </figure>
+        </div>
       </section>
 
-      <section id="work" class="section">
-        <h2>Selected work</h2>
-        <div class="cases">
+      <!-- Case studies -->
+      <section class="work" id="work" aria-labelledby="work-title">
+        <div class="wrap">
+          <h2 id="work-title" class="display display-md">What I’ve built</h2>
+
           <article class="case">
-            <p class="case-org">YSIDRA operations platform</p>
-            <h3>One system for the whole company</h3>
-            <dl>
-              <dt>The problem</dt>
-              <dd>Tasks, production, payments and deadlines lived in WhatsApp threads and people's heads. Nothing was tracked, so nothing could be improved.</dd>
-              <dt>What I built</dt>
-              <dd>A web platform every team member works from: tasks with owners and deadlines, production tracking, finance (salaries, costs, incoming payments), team rules and accountability, HubSpot CRM and two-way Google Calendar sync.</dd>
-              <dt>Built with</dt>
-              <dd class="stack">React, Vercel, HubSpot API, Google Calendar API</dd>
-            </dl>
+            <header class="case-head">
+              <h3 class="heading">One system for the whole company</h3>
+              <p class="case-org">YSIDRA operations platform</p>
+            </header>
+            <div class="case-body">
+              <div class="before">
+                <h4>Before</h4>
+                <p>Tasks, production, payments and deadlines lived in WhatsApp threads and people’s heads. Nothing was tracked, so nothing could be improved.</p>
+              </div>
+              <div class="after">
+                <h4>After</h4>
+                <p>One web platform every team member works from: tasks with owners and deadlines, production tracking, finance (salaries, costs, incoming payments), team rules and accountability, with HubSpot CRM and two-way Google Calendar sync.</p>
+                <p class="stack">React, Vercel, HubSpot API, Google Calendar API</p>
+              </div>
+            </div>
           </article>
+
           <article class="case">
-            <p class="case-org">YSIDRA ChatGPT app</p>
-            <h3>Selling through ChatGPT</h3>
-            <dl>
-              <dt>The problem</dt>
-              <dd>Custom notebook and gift orders start with a quote, and quotes took a back-and-forth on WhatsApp before a customer even knew the price range.</dd>
-              <dt>What I built</dt>
-              <dd>A custom MCP server that lets ChatGPT users get an instant quote for custom notebooks and corporate gifts. Every lead lands in HubSpot tagged by channel, so the team can see what ChatGPT brings in.</dd>
-              <dt>Built with</dt>
-              <dd class="stack">MCP, Node.js, HubSpot CRM</dd>
-            </dl>
+            <header class="case-head">
+              <h3 class="heading">Selling through ChatGPT</h3>
+              <p class="case-org">YSIDRA ChatGPT app</p>
+            </header>
+            <div class="case-body">
+              <div class="before">
+                <h4>Before</h4>
+                <p>Every custom notebook or gift order started with a back-and-forth on WhatsApp before the customer even knew the price range.</p>
+              </div>
+              <div class="after">
+                <h4>After</h4>
+                <p>A custom MCP server lets ChatGPT users get an instant quote for custom notebooks and corporate gifts. Every lead lands in HubSpot tagged by channel, so the team can see what ChatGPT brings in.</p>
+                <p class="stack">MCP, Node.js, HubSpot CRM</p>
+              </div>
+            </div>
           </article>
         </div>
       </section>
 
-      <section id="experience" class="section">
-        <h2>Experience</h2>
-        <ol class="timeline">
-          <li>
-            <div class="when">June 2026 – Present</div>
-            <div>
-              <h3>Operations &amp; Technology Lead<span class="at">YSIDRA</span></h3>
-              <ul>
-                <li>Built and run the company's operations platform; the whole team now works from one system.</li>
-                <li>Integrated HubSpot CRM and launched YSIDRA as a ChatGPT app through a custom MCP server.</li>
-                <li>Run Google Workspace, the domain and the website, with weekly analytics reports to the CEO.</li>
-                <li>Lead hiring, onboarding, team KPIs and vendor coordination.</li>
-              </ul>
-            </div>
-          </li>
-          <li>
-            <div class="when">Part-time, 2026 – Present</div>
-            <div>
-              <h3>AI Automation Tutor<span class="at">TechRush</span></h3>
-              <ul>
-                <li>Teach n8n, Zapier, Make and AI agents to career-switchers and professionals.</li>
-                <li>Guide hands-on builds: webhooks, lead capture, email sequences, multi-app workflows.</li>
-              </ul>
-            </div>
-          </li>
-          <li>
-            <div class="when">April 2026 – August 2026</div>
-            <div>
-              <h3>IT Support &amp; Web Developer<span class="at">Diamond Star Ports and Terminals</span></h3>
-              <ul>
-                <li>Shipped frontend and backend features on internal web systems.</li>
-                <li>Provided day-to-day IT support and fed user issues back into system design.</li>
-              </ul>
-            </div>
-          </li>
-          <li>
-            <div class="when">January 2025 – March 2026</div>
-            <div>
-              <h3>IT Support Intern<span class="at">Nigerian Breweries Plc</span></h3>
-              <ul>
-                <li>Supported 200+ users and cut downtime by 50%.</li>
-                <li>Built Spin to Win, replacing a paper ICT scrap sale with a fair, auditable web system.</li>
-                <li>Built an IT support chatbot that resolves about 70% of routine tickets.</li>
-              </ul>
-            </div>
-          </li>
-          <li>
-            <div class="when">January 2024 – December 2024</div>
-            <div>
-              <h3>Frontend Developer &amp; Junior Automation Specialist<span class="at">Bitoshi Inc.</span></h3>
-              <ul>
-                <li>Automated recruitment and cut time-to-hire by 40%.</li>
-                <li>Automated internal workflows, saving about 15 hours a week.</li>
-              </ul>
-            </div>
-          </li>
-          <li>
-            <div class="when">June 2023 – December 2023</div>
-            <div>
-              <h3>Customer Support &amp; Web Designer<span class="at">Cholatrek Technologies</span></h3>
-              <ul>
-                <li>Built AI chatbots that resolved 60% of customer inquiries.</li>
-                <li>Set up CRM automation that halved response times.</li>
-              </ul>
-            </div>
-          </li>
-        </ol>
-        <p class="edu">B.Tech Computer Science, Federal University of Technology, Akure (2018 to 2023)</p>
-      </section>
+      <!-- Experience -->
+      <section class="experience" id="experience" aria-labelledby="exp-title">
+        <div class="wrap">
+          <h2 id="exp-title" class="display display-md">Where I’ve worked</h2>
+          <ol class="jobs">
+            <li>
+              <p class="when">June 2026 – Present</p>
+              <div>
+                <h3>Operations &amp; Technology Lead <span class="org">YSIDRA</span></h3>
+                <ul>
+                  <li>Built and run the company’s operations platform; the whole team works from one system.</li>
+                  <li>Integrated HubSpot CRM and launched YSIDRA as a ChatGPT app through a custom MCP server.</li>
+                  <li>Run Google Workspace, the domain and the website, with weekly analytics reports to the CEO.</li>
+                  <li>Lead hiring, onboarding, team KPIs and vendor coordination.</li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <p class="when">2026 – Present, part-time</p>
+              <div>
+                <h3>AI Automation Tutor <span class="org">TechRush</span></h3>
+                <ul>
+                  <li>Teach n8n, Zapier, Make and AI agents to career-switchers and professionals.</li>
+                  <li>Guide hands-on builds: webhooks, lead capture, email sequences, multi-app workflows.</li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <p class="when">April 2026 – August 2026</p>
+              <div>
+                <h3>IT Support &amp; Web Developer <span class="org">Diamond Star Ports and Terminals</span></h3>
+                <ul>
+                  <li>Shipped frontend and backend features on internal web systems.</li>
+                  <li>Provided day-to-day IT support and fed user issues back into system design.</li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <p class="when">January 2025 – March 2026</p>
+              <div>
+                <h3>IT Support Intern <span class="org">Nigerian Breweries Plc</span></h3>
+                <ul>
+                  <li>Supported 200+ users and cut downtime by 50%.</li>
+                  <li>Built Spin to Win, replacing a paper ICT scrap sale with a fair, auditable web system.</li>
+                  <li>Built an IT support chatbot that resolves about 70% of routine tickets.</li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <p class="when">January 2024 – December 2024</p>
+              <div>
+                <h3>Frontend Developer &amp; Junior Automation Specialist <span class="org">Bitoshi Inc.</span></h3>
+                <ul>
+                  <li>Automated recruitment and cut time-to-hire by 40%.</li>
+                  <li>Automated internal workflows, saving about 15 hours a week.</li>
+                </ul>
+              </div>
+            </li>
+            <li>
+              <p class="when">June 2023 – December 2023</p>
+              <div>
+                <h3>Customer Support &amp; Web Designer <span class="org">Cholatrek Technologies</span></h3>
+                <ul>
+                  <li>Built AI chatbots that resolved 60% of customer inquiries.</li>
+                  <li>Set up CRM automation that halved response times.</li>
+                </ul>
+              </div>
+            </li>
+          </ol>
 
-      <section id="projects" class="section">
-        <h2>More projects</h2>
-        <ul class="projects">
-          <li><a href="https://spin2winn.netlify.app/" target="_blank" rel="noreferrer"><span class="p-name">Spin to Win</span><span class="p-what">Replaced a paper process for selling retired IT equipment with fair, random digital selection.</span><span class="p-go">Open site</span></a></li>
-          <li><a href="https://it-asset-frontend.vercel.app/" target="_blank" rel="noreferrer"><span class="p-name">IT Incident Management</span><span class="p-what">Raise incidents, assign tickets, track resolution and manage IT assets across teams.</span><span class="p-go">Open site</span></a></li>
-          <li><a href="https://deployment-scanner.onrender.com/" target="_blank" rel="noreferrer"><span class="p-name">Deployment Scanner</span><span class="p-what">Security checks for Kubernetes, Terraform, Docker and CI/CD configs, with AI risk explanations.</span><span class="p-go">Open site</span></a></li>
-          <li><a href="https://it-support-marvel.netlify.app/" target="_blank" rel="noreferrer"><span class="p-name">IT Support Chatbot</span><span class="p-what">Answers routine IT questions and logs every query for the helpdesk.</span><span class="p-go">Open site</span></a></li>
-          <li><a href="https://spectra-skins.vercel.app/" target="_blank" rel="noreferrer"><span class="p-name">Spectra Skins</span><span class="p-what">Online store for custom laptop skins, with cart and checkout.</span><span class="p-go">Open site</span></a></li>
-        </ul>
-      </section>
+          <h2 class="heading sub-heading">More projects</h2>
+          <ul class="projects">
+            <li><a href="https://spin2winn.netlify.app/" target="_blank" rel="noreferrer"><span class="p-name">Spin to Win</span><span class="p-what">Replaced a paper process for selling retired IT equipment with fair, random digital selection.</span><span class="p-go">Open site</span></a></li>
+            <li><a href="https://it-asset-frontend.vercel.app/" target="_blank" rel="noreferrer"><span class="p-name">IT Incident Management</span><span class="p-what">Raise incidents, assign tickets, track resolution and manage IT assets across teams.</span><span class="p-go">Open site</span></a></li>
+            <li><a href="https://deployment-scanner.onrender.com/" target="_blank" rel="noreferrer"><span class="p-name">Deployment Scanner</span><span class="p-what">Security checks for Kubernetes, Terraform, Docker and CI/CD configs, with AI risk explanations.</span><span class="p-go">Open site</span></a></li>
+            <li><a href="https://it-support-marvel.netlify.app/" target="_blank" rel="noreferrer"><span class="p-name">IT Support Chatbot</span><span class="p-what">Answers routine IT questions and logs every query for the helpdesk.</span><span class="p-go">Open site</span></a></li>
+            <li><a href="https://spectra-skins.vercel.app/" target="_blank" rel="noreferrer"><span class="p-name">Spectra Skins</span><span class="p-what">Online store for custom laptop skins, with cart and checkout.</span><span class="p-go">Open site</span></a></li>
+          </ul>
 
-      <section class="section">
-        <h2>Tools I work with</h2>
-        <dl class="skills">
-          <div><dt>Automation &amp; AI</dt><dd>n8n, Zapier, Make, Power Automate, Copilot Studio, AI agents, MCP servers, LLM APIs</dd></div>
-          <div><dt>Web</dt><dd>JavaScript, TypeScript, React, Next.js, Node.js, Express, Tailwind CSS</dd></div>
-          <div><dt>Data &amp; hosting</dt><dd>Supabase, Firebase, MongoDB, Vercel, Netlify, Git</dd></div>
-          <div><dt>Business systems</dt><dd>HubSpot, Google Workspace, Microsoft 365, SharePoint, Cloudflare</dd></div>
-          <div><dt>Operations</dt><dd>Process design, team KPIs, hiring and onboarding, vendor coordination, reporting</dd></div>
-        </dl>
-        <p class="certs">Certified: Microsoft Power Platform Fundamentals, CompTIA Network+, Zapier Certified Expert, n8n Contributor.</p>
+          <h2 class="heading sub-heading">Tools I work with</h2>
+          <dl class="tools">
+            <div><dt>Automation &amp; AI</dt><dd>n8n, Zapier, Make, Power Automate, Copilot Studio, AI agents, MCP servers, LLM APIs</dd></div>
+            <div><dt>Web</dt><dd>JavaScript, TypeScript, React, Next.js, Node.js, Express, Tailwind CSS</dd></div>
+            <div><dt>Data &amp; hosting</dt><dd>Supabase, Firebase, MongoDB, Vercel, Netlify, Git</dd></div>
+            <div><dt>Business systems</dt><dd>HubSpot, Google Workspace, Microsoft 365, SharePoint, Cloudflare</dd></div>
+            <div><dt>Operations</dt><dd>Process design, team KPIs, hiring and onboarding, vendor coordination, reporting</dd></div>
+          </dl>
+          <p class="certs">B.Tech Computer Science, Federal University of Technology, Akure (2018 to 2023). Certified in Microsoft Power Platform Fundamentals, CompTIA Network+, Zapier (Certified Expert) and n8n (Contributor).</p>
+        </div>
       </section>
     </main>
 
-    <footer id="contact" class="contact">
-      <h2>Have a process that should run itself?</h2>
-      <p>I'm open to remote roles in operations, automation and web development, and to project work.</p>
-      <div class="actions">
-        <a class="btn primary inverse" href="mailto:oladejimarvel@gmail.com">oladejimarvel@gmail.com</a>
-        <a class="btn inverse" href="tel:+2349130563103">+234 913 056 3103</a>
+    <footer class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="stripe" aria-hidden="true"></div>
+      <div class="wrap">
+        <h2 id="contact-title" class="display">Next stop: your team.</h2>
+        <p class="lede">I’m open to remote roles in operations, automation and web development, and to project work.</p>
+        <div class="actions">
+          <a class="btn btn-ink" href="mailto:oladejimarvel@gmail.com">oladejimarvel@gmail.com</a>
+          <a class="btn btn-line" href="tel:+2349130563103">+234&nbsp;913&nbsp;056&nbsp;3103</a>
+        </div>
+        <p class="links">
+          <a href="https://www.linkedin.com/in/oluwayomi-marvellous-6599b3382/" target="_blank" rel="noreferrer">LinkedIn</a>
+          <a href="https://github.com/spectracreates" target="_blank" rel="noreferrer">GitHub</a>
+          <a href="/Oluwayomi-Marvellous-CV.pdf" download>CV (PDF)</a>
+        </p>
       </div>
-      <p class="links">
-        <a href="https://www.linkedin.com/in/oluwayomi-marvellous-6599b3382/" target="_blank" rel="noreferrer">LinkedIn</a>
-        <a href="https://github.com/spectracreates" target="_blank" rel="noreferrer">GitHub</a>
-        <a href="/Oluwayomi-Marvellous-CV.pdf" download>CV</a>
-      </p>
     </footer>
   </body>
 </html>
