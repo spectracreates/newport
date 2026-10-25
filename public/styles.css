@@ -454,9 +454,6 @@ button {
 .feature + .feature {
   border-top: 1px solid var(--rule);
 }
-.feature:nth-of-type(2) .feature-media {
-  order: 2;
-}
 .feature-media {
   border-radius: var(--radius);
   overflow: hidden;
@@ -549,6 +546,51 @@ button {
   }
 }
 
+/* Motion studies */
+.studies {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(0, 1fr);
+  grid-template-areas: "copy copy" "wide tall";
+  gap: 24px 32px;
+  align-items: end;
+  padding: 48px 0 40px;
+  border-top: 1px solid var(--rule);
+}
+.studies-copy {
+  grid-area: copy;
+  max-width: 40rem;
+}
+.studies-copy .heading {
+  margin: 14px 0 10px;
+  font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+}
+.studies-copy p {
+  margin: 0;
+  color: #d3dce7;
+}
+.study {
+  margin: 0;
+}
+.study-wide {
+  grid-area: wide;
+}
+.study-tall {
+  grid-area: tall;
+}
+.study-tall .feature-media.portrait {
+  width: min(100%, 300px);
+  justify-self: start;
+}
+.study figcaption {
+  margin-top: 10px;
+  font-size: 0.95rem;
+  color: var(--haze);
+}
+.study figcaption b {
+  color: var(--headlight);
+  font-weight: 700;
+}
+
 /* Who I work with */
 .with {
   padding: 0 0 var(--section);
@@ -631,8 +673,9 @@ button {
     grid-template-columns: minmax(0, 1fr);
     gap: 24px;
   }
-  .feature:nth-of-type(2) .feature-media {
-    order: 0;
+  .studies {
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "copy" "wide" "tall";
   }
   .rows > li {
     grid-template-columns: minmax(0, 1fr);

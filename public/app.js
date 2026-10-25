@@ -282,6 +282,28 @@
     applyMotionPreference();
   }
 
+  /* ---------- Motion studies: play muted while on screen ---------- */
+  var studies = Array.prototype.slice.call(document.querySelectorAll("video[data-autoplay]"));
+  if (studies.length && "IntersectionObserver" in window) {
+    var vio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        var v = e.target;
+        if (e.isIntersecting && !reduce.matches && !v.dataset.userPaused) {
+          v.play().catch(function () {});
+        } else if (!e.isIntersecting && !v.paused) {
+          v.pause();
+        }
+      });
+    }, { threshold: 0.4 });
+    studies.forEach(function (v) {
+      // Respect a pause the visitor made with the controls.
+      v.addEventListener("pause", function () { if (v.dataset.inview === "1") v.dataset.userPaused = "1"; });
+      v.addEventListener("play", function () { delete v.dataset.userPaused; });
+      new IntersectionObserver(function (es) { v.dataset.inview = es[0].isIntersecting ? "1" : "0"; }, { threshold: 0.4 }).observe(v);
+      vio.observe(v);
+    });
+  }
+
   /* ---------- 2. Six lanes ---------- */
   var lanes = document.getElementById("lanes");
   if (!lanes) return;
