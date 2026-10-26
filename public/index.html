@@ -4,267 +4,185 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>Oluwayomi Marvellous | Creative Technologist, Lagos</title>
-    <meta name="description" content="Creative technologist in Lagos. Motion graphics, websites, backend, systems and dashboards, AI automation, chatbots and IT support, designed and built by one person." />
-    <meta name="theme-color" content="#0B1A2E" />
-    <meta name="color-scheme" content="dark" />
+    <meta name="description" content="Creative technologist in Lagos. Motion graphics, web apps, backends, AI automation and IT. Next: robotics." />
+    <meta name="theme-color" content="#18513F" />
 
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://devmarvel.vercel.app/" />
     <meta property="og:title" content="Oluwayomi Marvellous | Creative Technologist" />
-    <meta property="og:description" content="I make things move. Then I make them work. Motion, websites, backend, systems, AI automation and IT, from Lagos." />
+    <meta property="og:description" content="I design it, animate it, build it. Next: robots." />
     <meta property="og:image" content="https://devmarvel.vercel.app/og.png" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Oluwayomi Marvellous | Creative Technologist" />
-    <meta name="twitter:description" content="I make things move. Then I make them work. Motion, websites, backend, systems, AI automation and IT, from Lagos." />
+    <meta name="twitter:description" content="I design it, animate it, build it. Next: robots." />
     <meta name="twitter:image" content="https://devmarvel.vercel.app/og.png" />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="preload" href="/fonts/archivo.woff" as="font" type="font/woff" crossorigin />
+    <link rel="preload" href="/fonts/bricolage.woff" as="font" type="font/woff" crossorigin />
     <link rel="stylesheet" href="/styles.css" />
-    <script src="/hero.js" defer></script>
     <script src="/app.js" defer></script>
   </head>
   <body>
     <a class="skip" href="#main">Skip to content</a>
 
     <header class="top">
-      <a href="#top" class="mark" aria-label="Marvel, back to top">Marvel</a>
+      <a href="#top" class="brand" aria-label="Marvel, back to top"><span class="tape">MARVEL</span></a>
       <nav aria-label="Sections">
-        <a href="#lanes">What I do</a>
-        <a href="#work">Work</a>
+        <a href="#bench">Projects</a>
+        <a href="#robotics">Robotics</a>
         <a href="#about">About</a>
         <a href="#contact">Contact</a>
       </nav>
     </header>
 
+    <!-- The robot arm: drawn and solved live; decorative -->
+    <svg class="arm" aria-hidden="true" focusable="false">
+      <defs>
+        <filter id="armShadow" x="-20%" y="-20%" width="140%" height="140%">
+          <feGaussianBlur stdDeviation="7" />
+        </filter>
+      </defs>
+      <g class="arm-shadow" filter="url(#armShadow)"></g>
+      <g class="arm-body"></g>
+    </svg>
+
     <main id="main">
-      <!-- Hero: Third Mainland Bridge, long exposure, drawn live -->
-      <section class="hero" id="top" aria-labelledby="hero-title">
-        <canvas class="scene" aria-hidden="true"></canvas>
+      <section class="hero mat" id="top" aria-labelledby="hero-title">
+        <div class="ruler ruler-x" aria-hidden="true"></div>
+        <div class="ruler ruler-y" aria-hidden="true"></div>
         <div class="hero-inner">
-          <h1 id="hero-title" class="display">I make things move. Then I make them work.</h1>
+          <h1 id="hero-title" class="display">I design it, animate it, build it. Next: robots.</h1>
           <p class="lede">
             I’m Oluwayomi Marvellous, a creative technologist in Lagos.
-            Motion, websites, backends, AI and IT, from first frame to final deploy.
+            Motion graphics, web apps, backends, AI automation and IT, all from one bench.
           </p>
           <div class="actions">
-            <a class="btn btn-primary" href="#work">See my work</a>
+            <a class="btn btn-primary" href="#bench">See what I’ve built</a>
             <a class="btn btn-line" href="mailto:oladejimarvel@gmail.com">Email me</a>
           </div>
+          <p class="hint" aria-hidden="true"><span class="hint-fine">The arm follows your cursor. Click to make it grab.</span><span class="hint-touch">Tap the mat and the arm will reach for it.</span></p>
         </div>
-        <button class="motion-toggle" type="button" aria-pressed="false">Pause motion</button>
-        <p class="caption" aria-hidden="true">Third Mainland Bridge, after dark. Drawn live in code.</p>
       </section>
 
-      <!-- Six lanes: the one scroll-driven set-piece -->
-      <section class="lanes" id="lanes" aria-labelledby="lanes-title">
-        <div class="lanes-pin">
-          <div class="wrap lanes-head">
-            <h2 id="lanes-title" class="title">Six lanes. One bridge.</h2>
-            <p>Most projects need more than one kind of person. I cover the whole crossing, so nothing gets lost between a designer, a developer and the IT guy.</p>
+      <section class="bench mat" id="bench" aria-labelledby="bench-title">
+        <div class="wrap">
+          <div class="bench-head">
+            <h2 id="bench-title" class="title">On the bench</h2>
+            <p>Things I’ve built lately. Pick one up to see how it works.</p>
           </div>
 
-          <div class="wrap lanes-stage">
-            <svg class="trails" viewBox="0 0 1200 420" preserveAspectRatio="none" aria-hidden="true">
-              <path class="trail" style="--c: var(--sodium)" d="M0,40 C520,40 760,184 1110,210" pathLength="1" />
-              <path class="trail" style="--c: var(--headlight)" d="M0,108 C520,108 760,195 1110,210" pathLength="1" />
-              <path class="trail" style="--c: var(--taillight)" d="M0,176 C520,176 760,205 1110,210" pathLength="1" />
-              <path class="trail" style="--c: var(--signal-teal)" d="M0,244 C520,244 760,215 1110,210" pathLength="1" />
-              <path class="trail" style="--c: var(--led-blue)" d="M0,312 C520,312 760,225 1110,210" pathLength="1" />
-              <path class="trail" style="--c: var(--dusk-pink)" d="M0,380 C520,380 760,236 1110,210" pathLength="1" />
-            </svg>
-            <span class="meet" aria-hidden="true"></span>
-            <p class="meet-label">Your project</p>
+          <div class="parts">
+            <button class="part part-pulse" type="button" data-case="pulse" aria-haspopup="dialog" aria-label="Pulse Studio, open project">
+              <span class="tape">PULSE STUDIO</span>
+              <span class="part-media portrait">
+                <img src="/media/pulse-poster.jpg" alt="" width="540" height="960" loading="lazy" decoding="async" />
+              </span>
+              <span class="part-line">Music in, reel out. A visualizer that records clips in the browser.</span>
+            </button>
+
+            <button class="part part-nepa" type="button" data-case="nepa" aria-haspopup="dialog" aria-label="Up NEPA, open project">
+              <span class="tape">UP NEPA</span>
+              <span class="part-media phone">
+                <img src="/media/upnepa-phone.webp" alt="" width="585" height="1266" loading="lazy" decoding="async" />
+              </span>
+              <span class="part-line">Is there light in your area? Lagos answers, live.</span>
+            </button>
+
+            <button class="part part-spectra" type="button" data-case="spectra" aria-haspopup="dialog" aria-label="SpectraXpress, open project">
+              <span class="tape">SPECTRAXPRESS</span>
+              <span class="receipt">
+                <span class="r-row r-head">Used iPhone 12, from eBay</span>
+                <span class="r-row"><span>Item, $210</span><span>₦336,000</span></span>
+                <span class="r-row"><span>Shipping, 1.1 lb × $5</span><span>₦8,800</span></span>
+                <span class="r-row"><span>Service fee</span><span>₦5,000</span></span>
+                <span class="r-row r-total"><span>You pay</span><span>₦349,800</span></span>
+                <span class="r-note">Example at ₦1,600 to $1</span>
+              </span>
+              <span class="part-line">eBay gadgets delivered to Nigeria, one honest naira price.</span>
+            </button>
+
+            <a class="part part-slot" href="#robotics" aria-label="Reserved for robotics, jump to the robotics section">
+              <span class="slot-inner">
+                <span class="slot-dim" aria-hidden="true">240 × 160</span>
+                <span class="slot-text">Reserved for robotics</span>
+              </span>
+            </a>
+
+            <button class="part part-ysidra" type="button" data-case="ysidra" aria-haspopup="dialog" aria-label="YSIDRA systems, open project">
+              <span class="tape">YSIDRA SYSTEMS</span>
+              <span class="schematic">
+                <svg viewBox="0 0 520 250" role="img" aria-label="Diagram: ChatGPT app and HubSpot feed the YSIDRA ops platform, which syncs with Google Calendar and the team">
+                  <g class="wire">
+                    <path d="M118 62 H206" /><path d="M118 188 H206" />
+                    <path d="M314 125 H402" /><path d="M260 92 V40 H402" /><path d="M260 158 V210 H402" />
+                  </g>
+                  <g class="node"><rect x="18" y="38" width="100" height="48" rx="8" /><text x="68" y="60">ChatGPT</text><text x="68" y="76" class="s">MCP app</text></g>
+                  <g class="node"><rect x="18" y="164" width="100" height="48" rx="8" /><text x="68" y="186">HubSpot</text><text x="68" y="202" class="s">CRM</text></g>
+                  <g class="node core"><rect x="206" y="92" width="108" height="66" rx="10" /><text x="260" y="120">Ops</text><text x="260" y="138" class="s">platform</text></g>
+                  <g class="node"><rect x="402" y="16" width="100" height="48" rx="8" /><text x="452" y="38">Tasks</text><text x="452" y="54" class="s">&amp; deadlines</text></g>
+                  <g class="node"><rect x="402" y="101" width="100" height="48" rx="8" /><text x="452" y="123">Finance</text><text x="452" y="139" class="s">&amp; production</text></g>
+                  <g class="node"><rect x="402" y="186" width="100" height="48" rx="8" /><text x="452" y="208">Google</text><text x="452" y="224" class="s">Calendar</text></g>
+                </svg>
+              </span>
+              <span class="part-line">One system a whole company runs on, with sales coming in through ChatGPT.</span>
+            </button>
+
+            <button class="part part-motion" type="button" data-case="motion" aria-haspopup="dialog" aria-label="Motion work, open project">
+              <span class="tape">MOTION</span>
+              <span class="motion-pair">
+                <span class="part-media portrait"><img src="/media/five28-poster.jpg" alt="" width="720" height="1280" loading="lazy" decoding="async" /></span>
+                <span class="part-media landscape"><img src="/media/night-shift-poster.jpg" alt="" width="1280" height="720" loading="lazy" decoding="async" /></span>
+              </span>
+              <span class="part-line">A book-launch film for Five28, plus motion studies animated in code.</span>
+            </button>
           </div>
-
-          <ol class="wrap lane-list">
-            <li class="lane" style="--c: var(--sodium)">
-              <h3>Motion graphics</h3>
-              <p>Launch films, social videos, explainers and brand animation that make people stop scrolling.</p>
-            </li>
-            <li class="lane" style="--c: var(--headlight)">
-              <h3>Websites</h3>
-              <p>Fast, responsive sites and landing pages, designed and built end to end, including this one.</p>
-            </li>
-            <li class="lane" style="--c: var(--taillight)">
-              <h3>Backend &amp; APIs</h3>
-              <p>Node.js, databases, auth and integrations that keep every tool talking to the others.</p>
-            </li>
-            <li class="lane" style="--c: var(--signal-teal)">
-              <h3>Systems &amp; dashboards</h3>
-              <p>Internal tools and operations dashboards a whole team actually uses, every day.</p>
-            </li>
-            <li class="lane" style="--c: var(--led-blue)">
-              <h3>AI automation &amp; chatbots</h3>
-              <p>Workflows in n8n, Zapier and Make, AI agents, and chatbots that answer customers for you.</p>
-            </li>
-            <li class="lane" style="--c: var(--dusk-pink)">
-              <h3>IT support</h3>
-              <p>Devices, networks, Microsoft 365 and Google Workspace, set up properly and kept running.</p>
-            </li>
-          </ol>
         </div>
       </section>
 
-      <!-- Work -->
-      <section class="work" id="work" aria-labelledby="work-title">
+      <section class="bin paper" aria-labelledby="bin-title">
         <div class="wrap">
-          <h2 id="work-title" class="title">Selected work</h2>
-
-          <article class="feature">
-            <div class="feature-media portrait">
-              <video controls playsinline preload="none" poster="/media/five28-poster.jpg" width="720" height="1280" aria-label="Five28 book launch film">
-                <source src="/media/five28-book-launch.mp4" type="video/mp4" />
-              </video>
-            </div>
-            <div class="feature-copy">
-              <ul class="tags" aria-label="Disciplines">
-                <li style="--c: var(--sodium)">Motion graphics</li>
-              </ul>
-              <h3 class="heading">Five28: The Future of African Luxury Living</h3>
-              <p>A launch film for Five28’s tenth-anniversary book. Ten years told in under a minute: the story, the team, the print run and the book itself, cut vertical for social.</p>
-              <p class="meta">Vertical film, 51 seconds</p>
-            </div>
-          </article>
-
-          <article class="studies">
-            <div class="studies-copy">
-              <ul class="tags" aria-label="Disciplines">
-                <li style="--c: var(--sodium)">Motion graphics</li>
-                <li style="--c: var(--taillight)">Code</li>
-              </ul>
-              <h3 class="heading">Motion studies</h3>
-              <p>Two short pieces of my own, animated entirely in code: light trails that turn into type, and a signal that travels from idea to ship.</p>
-            </div>
-            <figure class="study study-wide">
-              <div class="feature-media landscape">
-                <video controls muted loop playsinline preload="none" data-autoplay poster="/media/night-shift-poster.jpg" width="1280" height="720" aria-label="Night Shift, a motion study">
-                  <source src="/media/night-shift.mp4" type="video/mp4" />
-                </video>
-              </div>
-              <figcaption><b>Night Shift</b>, 10 seconds</figcaption>
-            </figure>
-            <figure class="study study-tall">
-              <div class="feature-media portrait">
-                <video controls muted loop playsinline preload="none" data-autoplay poster="/media/connected-poster.jpg" width="720" height="1280" aria-label="Connected, a motion study">
-                  <source src="/media/connected.mp4" type="video/mp4" />
-                </video>
-              </div>
-              <figcaption><b>Connected</b>, 10 seconds, vertical</figcaption>
-            </figure>
-          </article>
-
-          <ol class="rows">
-            <li>
-              <div class="cover" data-colors="signal-teal,taillight,headlight" data-seed="YSIDRA operations platform" aria-hidden="true"></div>
-              <div class="row-main">
-                <h3 class="heading">YSIDRA operations platform</h3>
-                <p>One system a whole company works from: tasks and deadlines, production tracking, finance, team accountability, with HubSpot CRM and Google Calendar wired in.</p>
-              </div>
-              <ul class="tags" aria-label="Disciplines">
-                <li style="--c: var(--signal-teal)">Systems</li>
-                <li style="--c: var(--taillight)">Backend</li>
-                <li style="--c: var(--headlight)">Web</li>
-              </ul>
-            </li>
-            <li>
-              <div class="cover" data-colors="led-blue,taillight" data-seed="YSIDRA ChatGPT app" aria-hidden="true"></div>
-              <div class="row-main">
-                <h3 class="heading">YSIDRA ChatGPT app</h3>
-                <p>A custom MCP server that gives ChatGPT users instant quotes for custom notebooks and corporate gifts, with every lead landing in HubSpot.</p>
-              </div>
-              <ul class="tags" aria-label="Disciplines">
-                <li style="--c: var(--led-blue)">AI</li>
-                <li style="--c: var(--taillight)">Backend</li>
-              </ul>
-            </li>
-            <li>
-              <div class="cover" data-colors="led-blue,dusk-pink" data-seed="IT support chatbot" aria-hidden="true"></div>
-              <div class="row-main">
-                <h3 class="heading"><a href="https://it-support-marvel.netlify.app/" target="_blank" rel="noreferrer">IT support chatbot</a></h3>
-                <p>A helpdesk bot at Nigerian Breweries that resolves about 70% of routine tickets and logs every query.</p>
-              </div>
-              <ul class="tags" aria-label="Disciplines">
-                <li style="--c: var(--led-blue)">Chatbot</li>
-                <li style="--c: var(--dusk-pink)">IT support</li>
-              </ul>
-            </li>
-            <li>
-              <div class="cover" data-colors="headlight,taillight" data-seed="Spin to Win" aria-hidden="true"></div>
-              <div class="row-main">
-                <h3 class="heading"><a href="https://spin2winn.netlify.app/" target="_blank" rel="noreferrer">Spin to Win</a></h3>
-                <p>Replaced a paper process for selling retired IT equipment with a fair, random, auditable web system.</p>
-              </div>
-              <ul class="tags" aria-label="Disciplines">
-                <li style="--c: var(--headlight)">Web</li>
-                <li style="--c: var(--taillight)">Backend</li>
-              </ul>
-            </li>
-            <li>
-              <div class="cover" data-colors="signal-teal,dusk-pink" data-seed="IT incident management" aria-hidden="true"></div>
-              <div class="row-main">
-                <h3 class="heading"><a href="https://it-asset-frontend.vercel.app/" target="_blank" rel="noreferrer">IT incident management</a></h3>
-                <p>Raise incidents, assign tickets, track resolution and manage IT assets across teams.</p>
-              </div>
-              <ul class="tags" aria-label="Disciplines">
-                <li style="--c: var(--signal-teal)">Dashboard</li>
-                <li style="--c: var(--dusk-pink)">IT support</li>
-              </ul>
-            </li>
-            <li>
-              <div class="cover" data-colors="taillight,led-blue" data-seed="Deployment scanner" aria-hidden="true"></div>
-              <div class="row-main">
-                <h3 class="heading"><a href="https://deployment-scanner.onrender.com/" target="_blank" rel="noreferrer">Deployment scanner</a></h3>
-                <p>Security checks for Kubernetes, Terraform, Docker and CI/CD configs, with AI explanations of each risk.</p>
-              </div>
-              <ul class="tags" aria-label="Disciplines">
-                <li style="--c: var(--taillight)">Backend</li>
-                <li style="--c: var(--led-blue)">AI</li>
-              </ul>
-            </li>
-            <li>
-              <div class="cover" data-colors="headlight" data-seed="Spectra Skins" aria-hidden="true"></div>
-              <div class="row-main">
-                <h3 class="heading"><a href="https://spectra-skins.vercel.app/" target="_blank" rel="noreferrer">Spectra Skins</a></h3>
-                <p>An online store for custom laptop skins, with product pages, cart and checkout.</p>
-              </div>
-              <ul class="tags" aria-label="Disciplines">
-                <li style="--c: var(--headlight)">Web</li>
-              </ul>
-            </li>
-          </ol>
+          <h2 id="bin-title" class="title">From the parts bin</h2>
+          <ul class="bin-list">
+            <li><a href="https://spin2winn.netlify.app/" target="_blank" rel="noreferrer">Spin to Win</a><span>A fair, auditable digital draw that replaced a paper ICT scrap sale at Nigerian Breweries.</span></li>
+            <li><a href="https://it-support-marvel.netlify.app/" target="_blank" rel="noreferrer">IT support chatbot</a><span>Helpdesk bot that resolves about 70% of routine tickets.</span></li>
+            <li><a href="https://it-asset-frontend.vercel.app/" target="_blank" rel="noreferrer">IT incident management</a><span>Raise incidents, assign tickets, track resolution and IT assets.</span></li>
+            <li><a href="https://deployment-scanner.onrender.com/" target="_blank" rel="noreferrer">Deployment scanner</a><span>Security checks for Kubernetes, Terraform, Docker and CI/CD configs, explained by AI.</span></li>
+            <li><a href="https://spectra-skins.vercel.app/" target="_blank" rel="noreferrer">Spectra Skins</a><span>Online store for custom laptop skins.</span></li>
+          </ul>
         </div>
       </section>
 
-      <!-- Who I work with -->
-      <section class="with" aria-labelledby="with-title">
+      <section class="robotics mat" id="robotics" aria-labelledby="robo-title">
+        <div class="wrap robo-grid">
+          <div class="robo-left">
+            <h2 id="robo-title" class="display display-md">Next: robots.</h2>
+            <div class="robo-mount" aria-hidden="true"><span class="hint-fine">Move here and watch the joints work.</span><span class="hint-touch">Tap here and watch the joints work.</span></div>
+          </div>
+          <div class="robo-copy">
+            <p>I’m working toward a master’s in robotics in Europe. Robots need what I already do every day: motion that feels right, software that doesn’t break, and systems people can trust.</p>
+            <p>The arm on this page is my warm-up. It’s a two-link arm solved with inverse kinematics, written from scratch in plain JavaScript and redrawn every frame as it follows you.</p>
+            <dl class="specs">
+              <div><dt>Shoulder</dt><dd><span class="live" data-read="shoulder">–</span></dd></div>
+              <div><dt>Elbow</dt><dd><span class="live" data-read="elbow">–</span></dd></div>
+              <div><dt>Reach</dt><dd><span class="live" data-read="reach">–</span> of full extension</dd></div>
+              <div><dt>Solver</dt><dd>Law of cosines, elbow up</dd></div>
+              <div><dt>Smoothing</dt><dd>Critically damped spring</dd></div>
+            </dl>
+          </div>
+        </div>
+      </section>
+
+      <section class="about paper" id="about" aria-labelledby="about-title">
         <div class="wrap">
-          <h2 id="with-title" class="title">Who I work with</h2>
+          <h2 id="about-title" class="title">Who I work with</h2>
           <dl class="with-list">
-            <div>
-              <dt>Companies</dt>
-              <dd>Internal systems, automation and IT that save your team hours every week.</dd>
-            </div>
-            <div>
-              <dt>Creative studios</dt>
-              <dd>A developer who speaks motion and design, so the build keeps the craft intact.</dd>
-            </div>
-            <div>
-              <dt>Remote teams</dt>
-              <dd>Full-stack, motion and automation work from Lagos, on the same hours as Europe.</dd>
-            </div>
-            <div>
-              <dt>Local businesses</dt>
-              <dd>Websites, chatbots and automations that turn WhatsApp enquiries into orders.</dd>
-            </div>
+            <div><dt>Companies</dt><dd>Internal systems, automation and IT that save a team hours every week.</dd></div>
+            <div><dt>Creative studios</dt><dd>A developer who speaks motion and design, so the build keeps the craft.</dd></div>
+            <div><dt>Remote teams</dt><dd>Full-stack, motion and automation work from Lagos.</dd></div>
+            <div><dt>Local businesses</dt><dd>Websites, chatbots and payments that turn enquiries into orders.</dd></div>
           </dl>
-        </div>
-      </section>
 
-      <!-- About / experience -->
-      <section class="about" id="about" aria-labelledby="about-title">
-        <div class="wrap">
-          <h2 id="about-title" class="title">Where I’ve worked</h2>
+          <h2 class="title title-sub">Where I’ve worked</h2>
           <ol class="jobs">
             <li><span class="when">2026 – now</span><span class="what"><b>Operations &amp; Technology Lead</b>, YSIDRA</span></li>
             <li><span class="when">2026 – now</span><span class="what"><b>AI Automation Tutor</b>, TechCrush (part-time)</span></li>
@@ -273,19 +191,15 @@
             <li><span class="when">2024</span><span class="what"><b>Frontend Developer &amp; Automation Specialist</b>, Bitoshi Inc.</span></li>
             <li><span class="when">2023</span><span class="what"><b>Customer Support &amp; Web Designer</b>, Cholatrek Technologies</span></li>
           </ol>
-          <p class="fine">
-            B.Tech Computer Science, Federal University of Technology, Akure.
-            Microsoft Power Platform Fundamentals, CompTIA Network+, Zapier Certified Expert, n8n Contributor.
-            Tools I use most: Canva, React, Next.js, Node.js, Supabase, Firebase, n8n, Zapier, Make, HubSpot, Microsoft 365 and Google Workspace.
-          </p>
+          <p class="fine">B.Tech Computer Science, Federal University of Technology, Akure. Microsoft Power Platform Fundamentals, CompTIA Network+, Zapier Certified Expert, n8n Contributor.</p>
         </div>
       </section>
     </main>
 
-    <footer class="contact" id="contact" aria-labelledby="contact-title">
+    <footer class="contact mat" id="contact" aria-labelledby="contact-title">
       <div class="wrap">
-        <h2 id="contact-title" class="display">Let’s build something that moves.</h2>
-        <p class="lede">Tell me what you’re making and where it needs to go.</p>
+        <h2 id="contact-title" class="display display-md">Bring me a problem.</h2>
+        <p class="lede">A process that should run itself, a product that should move, a site that should sell. Tell me what you’re building.</p>
         <div class="actions">
           <a class="btn btn-primary" href="mailto:oladejimarvel@gmail.com">oladejimarvel@gmail.com</a>
           <a class="btn btn-line" href="tel:+2349130563103">+234&nbsp;913&nbsp;056&nbsp;3103</a>
@@ -297,5 +211,116 @@
         </p>
       </div>
     </footer>
+
+    <!-- Project dialog -->
+    <dialog class="case" id="case" aria-labelledby="case-title">
+      <div class="case-inner"></div>
+      <button class="case-close" type="button" aria-label="Close project">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" /></svg>
+      </button>
+    </dialog>
+
+    <!-- Case studies -->
+    <template id="case-pulse">
+      <div class="case-media">
+        <video src="/media/pulse-studio.mp4" poster="/media/pulse-poster.jpg" controls playsinline preload="none" width="540" height="960"></video>
+        <p class="media-note">A real clip recorded by Pulse Studio’s own recorder, playing its built-in demo beat through all four looks.</p>
+      </div>
+      <div class="case-copy">
+        <span class="tape">PULSE STUDIO</span>
+        <h2 id="case-title" class="heading">Music in, reel out.</h2>
+        <p>Load a song or play the built-in Afrobeats demo beat, pick a look and a palette, add a caption, and record a 9:16 or 16:9 clip for reels, straight from the browser.</p>
+        <ul class="facts">
+          <li>Four sound-reactive looks: Halo, Skyline, Galaxy and Wave</li>
+          <li>Palettes named for Lagos: Lagos sunset, Owambe gold, Neon Yaba, Mono</li>
+          <li>Records video and audio together, no upload, no server</li>
+          <li>One static file, no build step</li>
+        </ul>
+        <p class="stack">Web Audio, Canvas, MediaRecorder</p>
+        <p class="case-links"><a class="btn btn-ink" href="https://pulsestudio-ten.vercel.app/" target="_blank" rel="noreferrer">Open Pulse Studio</a><a href="https://github.com/spectracreates/pulsestudio" target="_blank" rel="noreferrer">Code on GitHub</a></p>
+      </div>
+    </template>
+
+    <template id="case-nepa">
+      <div class="case-media">
+        <img src="/media/upnepa-phone.webp" alt="Up NEPA on a phone, with sample reports: Ketu shows Light dey, confirmed by 8 reports, above a chart of when light usually comes." width="585" height="1266" />
+        <p class="media-note">Shown with sample reports so the screen isn’t empty.</p>
+      </div>
+      <div class="case-copy">
+        <span class="tape">UP NEPA</span>
+        <h2 id="case-title" class="heading">Know if there’s light before you reach house.</h2>
+        <p>A crowd-reported power tracker for Lagos. Neighbours tap “Light don come!” or “Dem don take am”, and the app turns those taps into a live status for 139 neighbourhoods across all 20 LGAs.</p>
+        <ul class="facts">
+          <li>One phone, one vote per area; only its latest report in 6 hours counts</li>
+          <li>Reports within about 3.5 km with good GPS count fully, and every report halves in weight each hour</li>
+          <li>Confirmed means 3 GPS-verified neighbours with at least 3 in 4 agreeing</li>
+          <li>Exact locations are checked and thrown away, never stored</li>
+          <li>Opens instantly on slow networks with a cached app shell</li>
+        </ul>
+        <p class="stack">Supabase (Postgres, realtime, anonymous auth), vanilla JS, Leaflet, service worker</p>
+        <p class="case-links"><a class="btn btn-ink" href="https://upnepa-tau.vercel.app/" target="_blank" rel="noreferrer">Open Up NEPA</a><a href="https://github.com/spectracreates/Up-Nepa-" target="_blank" rel="noreferrer">Code on GitHub</a></p>
+      </div>
+    </template>
+
+    <template id="case-spectra">
+      <div class="case-media">
+        <div class="calc" data-calc>
+          <p class="calc-title">Try the pricing</p>
+          <label>Item price on eBay <span class="calc-in"><span>$</span><input type="number" inputmode="decimal" min="0" step="1" value="210" data-k="usd" /></span></label>
+          <label>Shipping weight <span class="calc-in"><input type="number" inputmode="decimal" min="0" step="0.1" value="1.1" data-k="lb" /><span>lb</span></span></label>
+          <label>Exchange rate <span class="calc-in"><span>₦</span><input type="number" inputmode="decimal" min="0" step="10" value="1600" data-k="rate" /><span>per $1</span></span></label>
+          <p class="calc-out" aria-live="polite"><span>You pay</span><b data-out>₦349,800</b></p>
+          <p class="media-note">The same formula the store runs on its server: ₦5,000 service fee + item × rate + weight × $5 × rate, rounded up to the next ₦100. The rate here is only an example.</p>
+        </div>
+      </div>
+      <div class="case-copy">
+        <span class="tape">SPECTRAXPRESS</span>
+        <h2 id="case-title" class="heading">eBay gadgets to Nigeria, one honest price.</h2>
+        <p>Customers pick the exact used unit from live eBay listings, with the seller’s real photos, see the full naira price with shipping included, pay on Paystack and track the order to their door. Anything else on eBay goes through a quote.</p>
+        <ul class="facts">
+          <li>Prices are always computed on the server; the browser never sends a price</li>
+          <li>Payment is verified twice, on redirect and by webhook, so a closed tab never loses an order</li>
+          <li>Orders move from paid to delivered with a one-tap WhatsApp update at each step</li>
+          <li>Listings are cached for 6 hours to keep search costs down</li>
+        </ul>
+        <p class="stack">Next.js 15, Supabase, Paystack, SerpApi</p>
+        <p class="case-links"><a class="btn btn-ink" href="https://github.com/spectracreates/SpectraXpress" target="_blank" rel="noreferrer">Code on GitHub</a></p>
+      </div>
+    </template>
+
+    <template id="case-ysidra">
+      <div class="case-media">
+        <div class="schematic schematic-lg" data-clone=".part-ysidra .schematic svg"></div>
+        <p class="media-note">Internal system; a walkthrough is available on request.</p>
+      </div>
+      <div class="case-copy">
+        <span class="tape">YSIDRA SYSTEMS</span>
+        <h2 id="case-title" class="heading">One system for the whole company.</h2>
+        <p>At YSIDRA, tasks, production, payments and deadlines used to live in WhatsApp threads. I built the operations platform every team member now works from, and connected sales to it.</p>
+        <ul class="facts">
+          <li>Tasks with owners and deadlines, production tracking, finance and team accountability</li>
+          <li>HubSpot CRM wired in, with every deal tagged by the channel it came from</li>
+          <li>YSIDRA as a ChatGPT app: a custom MCP server that quotes custom notebooks and corporate gifts</li>
+          <li>Two-way Google Calendar sync for deadlines and production dates</li>
+        </ul>
+        <p class="stack">React, Vercel, HubSpot API, Google Calendar API, MCP</p>
+      </div>
+    </template>
+
+    <template id="case-motion">
+      <div class="case-media">
+        <video src="/media/five28-book-launch.mp4" poster="/media/five28-poster.jpg" controls playsinline preload="none" width="720" height="1280"></video>
+      </div>
+      <div class="case-copy">
+        <span class="tape">MOTION</span>
+        <h2 id="case-title" class="heading">Things that move people.</h2>
+        <p><b>Five28: The Future of African Luxury Living.</b> A launch film for Five28’s tenth-anniversary book: ten years told in under a minute, cut vertical for social.</p>
+        <p><b>Motion studies.</b> Two short pieces of my own, animated entirely in code.</p>
+        <div class="studies">
+          <figure><video src="/media/night-shift.mp4" poster="/media/night-shift-poster.jpg" controls muted loop playsinline preload="none" width="1280" height="720"></video><figcaption>Night Shift, 10 s</figcaption></figure>
+          <figure><video src="/media/connected.mp4" poster="/media/connected-poster.jpg" controls muted loop playsinline preload="none" width="720" height="1280"></video><figcaption>Connected, 10 s</figcaption></figure>
+        </div>
+      </div>
+    </template>
   </body>
 </html>
