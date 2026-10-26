@@ -384,6 +384,7 @@
     if (!tpl || !dialog) return;
     var inner = $(".case-inner", dialog);
     inner.textContent = "";
+    inner.className = "case-inner" + (tpl.getAttribute("data-layout") ? " case-" + tpl.getAttribute("data-layout") : "");
     inner.appendChild(tpl.content.cloneNode(true));
     $$("[data-clone]", inner).forEach(function (slot) {
       var src = document.querySelector(slot.getAttribute("data-clone"));
@@ -413,6 +414,9 @@
     dialog.addEventListener("click", function (e) { if (e.target === dialog) closeCase(); });
     $(".case-close", dialog).addEventListener("click", closeCase);
   }
+  $$("[data-open]").forEach(function (b) {
+    b.addEventListener("click", function () { openCase(b.getAttribute("data-open"), b); });
+  });
   parts.forEach(function (p) {
     p.addEventListener("click", function () {
       // The arm closes its grip as the project opens.
@@ -430,8 +434,9 @@
     function num(k) { var v = parseFloat($('[data-k="' + k + '"]', c).value); return isFinite(v) && v >= 0 ? v : 0; }
     function update() {
       var rate = num("rate");
-      var price = 5000 + num("usd") * rate + num("lb") * 5 * rate;
-      out.textContent = naira.format(Math.ceil(price / 100) * 100);
+      var up = function (n) { return Math.ceil(n / 100) * 100; };
+      var price = up(num("usd") * rate) + up(Math.max(1, num("lb")) * 5 * rate) + 5000;
+      out.textContent = naira.format(price);
     }
     $$("input", c).forEach(function (i) { i.addEventListener("input", update); });
     update();
