@@ -308,12 +308,16 @@ img, video { display: block; max-width: 100%; }
 .part-spectra { grid-column: 5 / 7; grid-row: 1; --rot: 2deg; }
 .part-swarm { grid-column: 5 / 7; grid-row: 2; --rot: -1.6deg; --tape-rot: 2deg; }
 .part-ysidra { grid-column: 1 / 4; grid-row: 3; --rot: -0.8deg; --tape-rot: -1deg; }
-.part-motion { grid-column: 4 / 7; grid-row: 3; --rot: 1.2deg; --tape-rot: 2deg; }
+.part-spectra-app { grid-column: 4 / 7; grid-row: 3; --rot: 1.2deg; --tape-rot: -1.5deg; }
+.part-motion { grid-column: 2 / 6; grid-row: 4; --rot: -1deg; --tape-rot: 2deg; }
 
 /* Browser frame (SpectraXpress) */
 .part-media.browser { background: #0b0b0c; border: 1px solid #2a2a2e; }
 .browser-bar { display: flex; gap: 5px; align-items: center; height: 20px; padding: 0 9px; background: #1b1b1f; border-bottom: 1px solid #2a2a2e; }
 .browser-bar i { width: 7px; height: 7px; border-radius: 50%; background: #3d3d44; }
+.part-media.browser.light { background: #f4f3ef; border-color: #d9d6cc; }
+.part-media.browser.light .browser-bar { background: #e8e6df; border-bottom-color: #d9d6cc; }
+.part-media.browser.light .browser-bar i { background: #c7c3b8; }
 .part-media.browser img { aspect-ratio: 16 / 10; height: auto; object-position: top; }
 
 /* Map print (flood swarm) */
@@ -496,8 +500,8 @@ img, video { display: block; max-width: 100%; }
 /* ---------- Responsive ---------- */
 @media (max-width: 999px) {
   .parts { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 56px 28px; }
-  .part-pulse, .part-nepa, .part-spectra, .part-swarm, .part-ysidra, .part-motion { grid-column: auto; grid-row: auto; }
-  .part-ysidra, .part-motion { grid-column: 1 / -1; }
+  .part-pulse, .part-nepa, .part-spectra, .part-swarm, .part-ysidra, .part-spectra-app, .part-motion { grid-column: auto; grid-row: auto; }
+  .part-ysidra, .part-spectra-app, .part-motion { grid-column: 1 / -1; }
   .part-nepa { padding: 0 8%; }
   .robo-grid { grid-template-columns: minmax(0, 1fr); gap: 24px; }
   .robo-mount { min-height: 240px; }
